@@ -1,4 +1,5 @@
 # ISO8601
+ISO8601 in Swift
 
 [![CI Status](http://img.shields.io/travis/onmyway133/ISO8601.svg?style=flat)](https://travis-ci.org/onmyway133/ISO8601)
 [![Version](https://img.shields.io/cocoapods/v/ISO8601.svg?style=flat)](http://cocoadocs.org/docsets/ISO8601)
@@ -6,14 +7,29 @@
 [![License](https://img.shields.io/cocoapods/l/ISO8601.svg?style=flat)](http://cocoadocs.org/docsets/ISO8601)
 [![Platform](https://img.shields.io/cocoapods/p/ISO8601.svg?style=flat)](http://cocoadocs.org/docsets/ISO8601)
 
+![](Screenshots/Banner.png)
+
 ## Description
 
-**ISO8601** description.
+My answer on [How do I get ISO 8601 date in iOS?](http://stackoverflow.com/a/37082414/1418457)
 
 ## Usage
 
+`DateFormatter.date(string:)`
+
 ```swift
-<API>
+let date = NSDate(timeIntervalSince1970: 1460111130)
+
+XCTAssertEqual(DateFormatter.date(string: "2016-04-08T10:25:30Z"), date)
+XCTAssertEqual(DateFormatter.date(string: "2016-04-08T102530Z"), date)
+```
+
+`DateFormatter.string(date:)`
+
+```swift
+let date = NSDate(timeIntervalSince1970: 1460111130)
+
+XCTAssertEqual(DateFormatter.string(date: date), "2016-04-08T10:25:30 +0000")
 ```
 
 ## Installation
