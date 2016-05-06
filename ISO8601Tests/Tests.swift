@@ -18,6 +18,7 @@ class Tests: XCTestCase {
     XCTAssertEqual(DateFormatter.date(string: "2016-04-08T102530Z"), date)
     XCTAssertEqual(DateFormatter.date(string: "20160408T10:25:30Z"), date)
     XCTAssertEqual(DateFormatter.date(string: "2016-04-08 10:25:30Z"), date)
+    XCTAssertEqual(DateFormatter.date(string: "20160408 10:25:30Z"), date)
 
     XCTAssertEqual(DateFormatter.date(string: "2016-04-08 11:25:30+0100"), date)
     XCTAssertEqual(DateFormatter.date(string: "2016-04-08 11:25:30     +0100"), date)
