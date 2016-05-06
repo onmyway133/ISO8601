@@ -1,0 +1,14 @@
+PODS:
+  - ISO8601 (0.1.0)
+
+DEPENDENCIES:
+  - ISO8601 (from `../../`)
+
+EXTERNAL SOURCES:
+  ISO8601:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  ISO8601: b9fb7d9fd8f91d8251a8ce34e9123ccfdecf7fed
+
+COCOAPODS: 0.39.0
