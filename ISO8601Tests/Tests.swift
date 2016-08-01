@@ -38,4 +38,12 @@ class Tests: XCTestCase {
     XCTAssertEqual(DateFormatter.string(date: date), string)
     XCTAssertEqual(DateFormatter.date(string: string), date)
   }
+
+  func test3() {
+    let date = NSDate(timeIntervalSince1970: 1469258663)
+    let string = "2016-07-23T07:24:23Z"
+
+    XCTAssertEqual(DateFormatter.string(date: date, identifier: "Z"), string)
+    XCTAssertEqual(DateFormatter.date(string: string), date)
+  }
 }

@@ -57,7 +57,7 @@ public struct DateFormatter {
 
    - returns: A string representation of date formatted using ISO8601
    */
-  public static func string(date date: NSDate) -> String {
-    return dateToStringFormatter.stringFromDate(date).stringByAppendingString(" +0000")
+  public static func string(date date: NSDate, identifier: String = " +0000") -> String {
+    return dateToStringFormatter.stringFromDate(date).stringByAppendingString(identifier)
   }
 }
