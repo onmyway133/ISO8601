@@ -6,6 +6,7 @@ ISO8601 in Swift
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/ISO8601.svg?style=flat)](http://cocoadocs.org/docsets/ISO8601)
 [![Platform](https://img.shields.io/cocoapods/p/ISO8601.svg?style=flat)](http://cocoadocs.org/docsets/ISO8601)
+<img src="https://img.shields.io/badge/%20in-swift%203.0-orange.svg">
 
 ![](Screenshots/Banner.png)
 

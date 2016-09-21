@@ -10,19 +10,19 @@ import Foundation
 
 public struct DateFormatter {
   
-  public static let stringToDateFormatter: NSDateFormatter = {
-    let formatter = NSDateFormatter()
-    formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+  public static let stringToDateFormatter: Foundation.DateFormatter = {
+    let formatter = Foundation.DateFormatter()
+    formatter.locale = Locale(identifier: "en_US_POSIX")
     formatter.dateFormat = "yyyyMMdd HHmmssZ"
 
     return formatter
   }()
 
-  public static let dateToStringFormatter: NSDateFormatter = {
-    let formatter = NSDateFormatter()
-    formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+  public static let dateToStringFormatter: Foundation.DateFormatter = {
+    let formatter = Foundation.DateFormatter()
+    formatter.locale = Locale(identifier: "en_US_POSIX")
     formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-    formatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+    formatter.timeZone = TimeZone(secondsFromGMT: 0)
 
     return formatter
   }()
@@ -34,20 +34,20 @@ public struct DateFormatter {
 
    - returns: A date representation of string formatted using ISO8601, nil if fails
    */
-  public static func date(string string: String) -> NSDate? {
+  public static func date(string: String) -> Date? {
     var basicString = string
 
     if let regex = try? NSRegularExpression(pattern: "[0-9]{4}-[0-9]{2}-[0-9]{2}", options: []),
-      result = regex.firstMatchInString(string, options: .Anchored, range: NSMakeRange(0, string.characters.count)) {
-      basicString = (basicString as NSString).stringByReplacingOccurrencesOfString("-", withString: "", options: [], range: result.range)
+      let result = regex.firstMatch(in: string, options: .anchored, range: NSMakeRange(0, string.characters.count)) {
+      basicString = (basicString as NSString).replacingOccurrences(of: "-", with: "", options: [], range: result.range)
     }
 
     basicString = basicString
-      .stringByReplacingOccurrencesOfString(":", withString: "")
-      .stringByReplacingOccurrencesOfString("GMT", withString: "")
-      .stringByReplacingOccurrencesOfString("T", withString: " ")
+      .replacingOccurrences(of: ":", with: "")
+      .replacingOccurrences(of: "GMT", with: "")
+      .replacingOccurrences(of: "T", with: " ")
 
-    return stringToDateFormatter.dateFromString(basicString)
+    return stringToDateFormatter.date(from: basicString)
   }
 
   /**
@@ -57,7 +57,7 @@ public struct DateFormatter {
 
    - returns: A string representation of date formatted using ISO8601
    */
-  public static func string(date date: NSDate, identifier: String = " +0000") -> String {
-    return dateToStringFormatter.stringFromDate(date).stringByAppendingString(identifier)
+  public static func string(date: Date, identifier: String = " +0000") -> String {
+    return dateToStringFormatter.string(from: date) + identifier
   }
 }
