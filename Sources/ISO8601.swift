@@ -8,9 +8,33 @@
 
 import Foundation
 
-public struct DateFormatter {
-  
-  public static let stringToDateFormatter: Foundation.DateFormatter = {
+public struct Config {
+  public var timeZoneIdentifier: String = "Z"
+
+  public init() {
+    
+  }
+}
+
+public struct Formatter {
+
+  // MARK: - Shared
+
+  public static let shared = Formatter(config: Config())
+
+  // MARK: - Properties
+
+  public let config: Config
+
+  // MARK: Init
+
+  public init(config: Config) {
+    self.config = config
+  }
+
+  // MARK: - DateFormatter
+
+  public var stringToDateFormatter: DateFormatter = {
     let formatter = Foundation.DateFormatter()
     formatter.locale = Locale(identifier: "en_US_POSIX")
     formatter.dateFormat = "yyyyMMdd HHmmssZ"
@@ -18,7 +42,7 @@ public struct DateFormatter {
     return formatter
   }()
 
-  public static let stringToDateMillisecondsFormatter: Foundation.DateFormatter = {
+  public var stringToDateMillisecondsFormatter: DateFormatter = {
     let formatter = Foundation.DateFormatter()
     formatter.locale = Locale(identifier: "en_US_POSIX")
     formatter.dateFormat = "yyyyMMdd HHmmss.SSSZ"
@@ -26,7 +50,7 @@ public struct DateFormatter {
     return formatter
   }()
 
-  public static let dateToStringFormatter: Foundation.DateFormatter = {
+  public var dateToStringFormatter: DateFormatter = {
     let formatter = Foundation.DateFormatter()
     formatter.locale = Locale(identifier: "en_US_POSIX")
     formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
@@ -42,7 +66,7 @@ public struct DateFormatter {
 
    - returns: A date representation of string formatted using ISO8601, nil if fails
    */
-  public static func date(string: String) -> Date? {
+  public func date(string: String) -> Date? {
     var basicString = string
 
     if let regex = try? NSRegularExpression(pattern: "[0-9]{4}-[0-9]{2}-[0-9]{2}", options: []),
@@ -60,7 +84,7 @@ public struct DateFormatter {
       ?? stringToDateMillisecondsFormatter.date(from: basicString)
   }
 
-  public static func string(date: Date, timezone: String = "Z") -> String {
-    return dateToStringFormatter.string(from: date) + timezone
+  public func string(date: Date) -> String {
+    return dateToStringFormatter.string(from: date) + config.timeZoneIdentifier
   }
 }
