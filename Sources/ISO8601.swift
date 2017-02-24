@@ -18,6 +18,14 @@ public struct DateFormatter {
     return formatter
   }()
 
+  public static let stringToDateMillisecondsFormatter: Foundation.DateFormatter = {
+    let formatter = Foundation.DateFormatter()
+    formatter.locale = Locale(identifier: "en_US_POSIX")
+    formatter.dateFormat = "yyyyMMdd HHmmss.SSSZ"
+
+    return formatter
+  }()
+
   public static let dateToStringFormatter: Foundation.DateFormatter = {
     let formatter = Foundation.DateFormatter()
     formatter.locale = Locale(identifier: "en_US_POSIX")
@@ -46,11 +54,13 @@ public struct DateFormatter {
       .replacingOccurrences(of: ":", with: "")
       .replacingOccurrences(of: "GMT", with: "")
       .replacingOccurrences(of: "T", with: " ")
+      .replacingOccurrences(of: ",", with: ".")
 
     return stringToDateFormatter.date(from: basicString)
+      ?? stringToDateMillisecondsFormatter.date(from: basicString)
   }
 
-  public static func string(date: Date, identifier: String = " +0000") -> String {
-    return dateToStringFormatter.string(from: date) + identifier
+  public static func string(date: Date, timezone: String = "Z") -> String {
+    return dateToStringFormatter.string(from: date) + timezone
   }
 }

@@ -31,25 +31,26 @@ class Tests: XCTestCase {
     XCTAssertEqual(DateFormatter.date(string: "20160408 08:25:30-02:00"), date)
   }
 
-  func testSeconds() {
+  func testMilliSeconds() {
     let date = Date(timeIntervalSince1970: 1460111130)
 
     XCTAssertEqual(DateFormatter.date(string: "2016-04-08T10:25:30.000Z"), date)
+    XCTAssertEqual(DateFormatter.date(string: "2016-04-08T10:25:30,000Z"), date)
   }
 
   func testTimezone() {
     let date = Date(timeIntervalSince1970: 1460111130)
     let string = "2016-04-08T10:25:30 +0000"
 
-    XCTAssertEqual(DateFormatter.string(date: date), string)
+    XCTAssertEqual(DateFormatter.string(date: date, timezone: " +0000"), string)
     XCTAssertEqual(DateFormatter.date(string: string), date)
   }
 
   func testTimezoneZ() {
     let date = Date(timeIntervalSince1970: 1469258663)
-    let string = "2016-07-23T07:24:23Z"
+    let string = "2016-07-23T07:24:23 +0000"
 
-    XCTAssertEqual(DateFormatter.string(date: date, identifier: "Z"), string)
+    XCTAssertEqual(DateFormatter.string(date: date, timezone: " +0000"), string)
     XCTAssertEqual(DateFormatter.date(string: string), date)
   }
 }
