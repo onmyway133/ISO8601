@@ -19,7 +19,7 @@ My answer on [How do I get ISO 8601 date in iOS?](http://stackoverflow.com/a/370
 `DateFormatter.date(string:)`
 
 ```swift
-let date = NSDate(timeIntervalSince1970: 1460111130)
+let date = Date(timeIntervalSince1970: 1460111130)
 
 XCTAssertEqual(DateFormatter.date(string: "2016-04-08T10:25:30Z"), date)
 XCTAssertEqual(DateFormatter.date(string: "20160408 10:25:30Z"), date)
@@ -30,7 +30,7 @@ XCTAssertEqual(DateFormatter.date(string: "2016-04-08 202530GMT+1000"), date)
 `DateFormatter.string(date:)`
 
 ```swift
-let date = NSDate(timeIntervalSince1970: 1460111130)
+let date = Date(timeIntervalSince1970: 1460111130)
 
 XCTAssertEqual(DateFormatter.string(date: date), "2016-04-08T10:25:30 +0000")
 ```

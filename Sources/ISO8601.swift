@@ -28,7 +28,7 @@ public struct DateFormatter {
   }()
 
   /**
-   Parse an ISO8601 string to NSDate
+   Parse an ISO8601 string to Date
 
    - parameter string: The string to parse
 
@@ -50,13 +50,6 @@ public struct DateFormatter {
     return stringToDateFormatter.date(from: basicString)
   }
 
-  /**
-   Parse a date to ISO8601 string
-
-   - parameter date: The date to parse
-
-   - returns: A string representation of date formatted using ISO8601
-   */
   public static func string(date: Date, identifier: String = " +0000") -> String {
     return dateToStringFormatter.string(from: date) + identifier
   }
