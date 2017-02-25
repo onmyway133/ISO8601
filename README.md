@@ -16,23 +16,37 @@ My answer on [How do I get ISO 8601 date in iOS?](http://stackoverflow.com/a/370
 
 ## Usage
 
+### Formatter
+
+Create a new formatter
+
+```swift
+var config = Config()
+config.timeZoneIdentifier = " +0000"
+let formatter = Formatter(config: config)
+```
+
+or use the default
+
+```swift
+Formatter.shared
+```
+
 ### Convert string to date
 
 ```swift
-DateFormatter.date(string: "2016-04-08T10:25:30Z")
-DateFormatter.date(string: "20160408 10:25:30Z")
-DateFormatter.date(string: "2016-04-08 112530 +010000")
-DateFormatter.date(string: "2016-04-08 202530GMT+1000")
-DateFormatter.date(string: "2016-04-08T10:25:30.000Z")
+Formatter.shared.date(string: "2016-04-08T10:25:30Z")		// extended format with Z
+Formatter.shared.date(string: "20160408 10:25:30Z")			// basic format with Z
+Formatter.shared.date(string: "2016-04-08 112530 +010000")	// extended format with timezone offset
+Formatter.shared.date(string: "2016-04-08 202530GMT+1000")	// extended format with GMT
+Formatter.shared.date(string: "2016-04-08T10:25:30.000Z")	// milliseconds
 ``
 
 ### Convert date to string
 
 ```swift
 let date = Date(timeIntervalSince1970: 1460111130)
-
-DateFormatter.string(date: date, timezone: " +0000") // 2016-04-08T10:25:30 +0000
-DateFormatter.string(date: date) // 2016-04-08T10:25:30Z
+Formatter.shared.string(date: date) // 2016-04-08T10:25:30Z	// timezone Z
 ```
 
 ## Installation
