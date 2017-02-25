@@ -55,7 +55,7 @@ Formatter.shared.string(date: date) // 2016-04-08T10:25:30Z	// timezone Z
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'ISO8601'
+pod 'ISO8601', git: 'https://github.com/onmyway133/ISO8601'
 ```
 
 **ISO8601** is also available through [Carthage](https://github.com/Carthage/Carthage).
