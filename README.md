@@ -40,7 +40,7 @@ Formatter.shared.date(string: "20160408 10:25:30Z")			// basic format with Z
 Formatter.shared.date(string: "2016-04-08 112530 +010000")	// extended format with timezone offset
 Formatter.shared.date(string: "2016-04-08 202530GMT+1000")	// extended format with GMT
 Formatter.shared.date(string: "2016-04-08T10:25:30.000Z")	// milliseconds
-``
+```
 
 ### Convert date to string
 
