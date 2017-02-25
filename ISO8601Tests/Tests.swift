@@ -36,6 +36,8 @@ class Tests: XCTestCase {
 
     XCTAssertEqual(Formatter.shared.date(string: "2016-04-08T10:25:30.000Z"), date)
     XCTAssertEqual(Formatter.shared.date(string: "2016-04-08T10:25:30,000Z"), date)
+    XCTAssertEqual(Formatter.shared.date(string: "2016-04-08T10:25:30.000 +0000"), date)
+    XCTAssertEqual(Formatter.shared.date(string: "2016-04-08T10:25:30.000GMT +0000"), date)
   }
 
   func testTimezoneZ() {
