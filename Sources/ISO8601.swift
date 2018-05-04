@@ -70,7 +70,7 @@ public struct Formatter {
     var basicString = string
 
     if let regex = try? NSRegularExpression(pattern: "[0-9]{4}-[0-9]{2}-[0-9]{2}", options: []),
-      let result = regex.firstMatch(in: string, options: .anchored, range: NSMakeRange(0, string.characters.count)) {
+      let result = regex.firstMatch(in: string, options: .anchored, range: NSMakeRange(0, string.count)) {
       basicString = (basicString as NSString).replacingOccurrences(of: "-", with: "", options: [], range: result.range)
     }
 

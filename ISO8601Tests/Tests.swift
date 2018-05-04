@@ -41,6 +41,12 @@ class Tests: XCTestCase {
     XCTAssertEqual(Formatter.shared.date(string: "2016-04-08T10:25:30.0000000+00:00"), date)
   }
 
+  func testMilliSeconds2() {
+    let date = Date(timeIntervalSince1970: 1524025255)
+
+    XCTAssertEqual(Formatter.shared.date(string: "2018-04-18T04:20:55.000Z"), date)
+  }
+
   func testTimezoneZ() {
     let date = Date(timeIntervalSince1970: 1469258663)
     let string = "2016-07-23T07:24:23Z"
